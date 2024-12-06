@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter Your Name</title>
+  </head>
+  <body>
+    <input
+      class="js-username-input"
+      placeholder="Enter Your Name"
+      onkeydown="
+      handleKeyDown();
+      "
+      onkeyup="
+      handleOnKeyUp();
+      "
+    />
+    <button
+      onclick="
+    getUserInput();
+  ">Submit
+    </button>
+    <p class="js-username-para"></p>
+
+    <h1>Projects links</h1>
+    <ol>
+      <li><p>Head-Tail-Game <a href="https://github.com/MohdZubair6786/Head-Tail-Game">link</a></p></li>
+      <li><p>Rock-Paper-Scissor-Game<a href="https://github.com/MohdZubair6786/Rock-Paper-Scissor">link</a></p></li>
+      <li><p>Go to my github account for more projects.<a href=""></a></p></li>
+      <p>My Github Account<a href=https://github.com/MohdZubair6786">link</a></p>
+      <!-- <li><p><a href=""></a></p></li> -->
+    </ol>
+
+    <script>
+      localStorage.getItem('userValue');
+
+      function handleKeyDown(){
+        if(event.key==='Enter') {
+          getUserInput();
+        }else if(event.key==='Backspace'){
+          document.querySelector('.js-username-para')
+          .innerHTML='';
+        }
+      }
+      
+      function getUserInput() {
+        const userInput = document.querySelector(".js-username-input");
+        const userValue = userInput.value;
+        if (userValue === "") {
+          console.log("Please Enter Your Name!");
+          
+        }else if(userValue===Number){
+          document.querySelector(".js-username-para")
+          .innerHTML = 'It is not valid';
+        } else {
+          document.querySelector(".js-username-para")
+          .innerHTML = `Your name Is : ${userValue}`;
+        }
+        localStorage.setItem('userValue',userValue);
+      }
+      function handleOnKeyUp(){
+        getUserInput();
+      }
+      </script>
+
+  </body>
+</html>
